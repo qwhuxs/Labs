@@ -1,4 +1,4 @@
-# 🧩  Lab1
+# 🧩 Lab1 – React Anagram Solver
 
 React application for solving anagrams.
 Project completed for the course **"Стандартизація та документування"**.
@@ -7,24 +7,25 @@ Project completed for the course **"Стандартизація та докум
 
 ## 🔗 Repository
 
-[git@git.ztu.edu.ua](mailto:git@git.ztu.edu.ua):vtk241_kai/labs.git
+[GitHub Repository](https://github.com/qwhuxs/Labs.git)
 
 ---
 
-## 🔐 GDPR
+### Команди
 
-The project includes:
-
-* Cookie consent popup
-* Privacy Policy document
+* Запуск застосунку: npm start
+* Storybook (Тестування компонентів): npm run storybook
+* Генерація документації: npm run docs
+* Перевірка ліцензій залежностей: npm run license-check
 
 ---
+
 
 ## 📄 License
 
-MIT License
-See LICENSE file.
-Dependency license report: license-report.txt
+Проєкт розповсюджується під ліцензією MIT.
+* Докладніше: https://choosealicense.com/licenses/mit/
+* Звіт про перевірку залежностей: license-report.txt
 
 ---
 
