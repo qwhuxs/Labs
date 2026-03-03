@@ -10,6 +10,7 @@ import ResultPage from "./pages/ResultPage";
 import UserResultsPage from "./pages/UserResultsPage";
 import Header from "./components/Header";
 import { GameSettingsProvider } from "./context/GameSettingsContext";
+import CookieConsent from "react-cookie-consent";
 
 export default function App() {
   const [finalScore, setFinalScore] = useState(0);
@@ -56,6 +57,19 @@ export default function App() {
           </AppContainer>
         </GameSettingsProvider>
       </Router>
+
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Decline"
+        enableDeclineButton
+        cookieName="anagramConsent"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#fff", background: "#4CAF50" }}
+        declineButtonStyle={{ color: "#fff", background: "#f44336" }}
+      >
+        This website uses cookies to ensure best user experience.
+      </CookieConsent>
     </ThemeProvider>
   );
 }
