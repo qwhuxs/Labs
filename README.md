@@ -11,6 +11,18 @@ Project completed for the course **"Стандартизація та докум
 
 ---
 
+### 📦 Package Configuration
+
+Файл `package.json` містить основні налаштування проєкту:
+
+- Метадані проєкту (назва, версія, приватність)
+- Залежності для роботи застосунку (`react`, `react-router-dom`, `styled-components`, `react-hook-form`, тощо)
+- Залежності для розробки та документації (`storybook`, `jsdoc`, `tailwindcss`, `webpack`, `eslint`)
+- Скрипти для запуску, збірки, тестування та генерації документації
+- Налаштування ESLint та підтримуваних браузерів
+
+---
+
 ### Команди
 
 * Запуск застосунку: npm start
@@ -19,7 +31,6 @@ Project completed for the course **"Стандартизація та докум
 * Перевірка ліцензій залежностей: npm run license-check
 
 ---
-
 
 ## 📄 License
 
