@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Portal from "./Portal";
+import DefaultPortal from "./Portal"; 
 import Button from "./Button";
 import { useGameSettings } from "../context/GameSettingsContext";
 
@@ -19,12 +19,8 @@ const ModalOverlay = styled.div`
   animation: fadeIn 0.3s ease;
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 `;
 
@@ -39,14 +35,8 @@ const ModalWindow = styled.div`
   animation: popIn 0.4s ease;
 
   @keyframes popIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8) translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
   }
 `;
 
@@ -74,26 +64,13 @@ const ModalActions = styled.div`
   }
 `;
 
-export default function GameFinishModal({ score, onRestart, onNext }) {
+export default function GameFinishModal({ score, onRestart, onNext, Portal = DefaultPortal }) {
   const navigate = useNavigate();
   const { settings } = useGameSettings();
   const { rounds } = settings;
 
-  const handleNext = () => {
-    if (onNext) {
-      onNext();
-    } else {
-      navigate('/results');
-    }
-  };
-
-  const handleRestart = () => {
-    if (onRestart) {
-      onRestart();
-    } else {
-      navigate('/settings');
-    }
-  };
+  const handleNext = () => (onNext ? onNext() : navigate('/results'));
+  const handleRestart = () => (onRestart ? onRestart() : navigate('/settings'));
 
   return (
     <Portal>

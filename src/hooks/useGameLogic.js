@@ -16,10 +16,30 @@ const hardWords = [
   "КРОКОДИЛ","АНТИЛОПА","МАНДРИЛ","ПАПУГА","НОСОРОГ","СТРАУС","КАЙМАН","КОАЛА"
 ];
 
+/**
+ * Shuffles the letters of a word randomly.
+ * @param {string} word - The word to shuffle.
+ * @returns {string} Shuffled word.
+ */
 function shuffle(word) {
   return word.split("").sort(() => Math.random() - 0.5).join("");
 }
 
+/**
+ * Custom hook for handling the anagram game logic.
+ * Manages game rounds, word scrambling, score tracking, user input, and timer.
+ * @returns {Object} An object containing game state and handler functions.
+ * @property {number} round - Current round number.
+ * @property {number} score - Current player score.
+ * @property {string} scrambledWord - Current scrambled word to guess.
+ * @property {string} userInput - Player's current input.
+ * @property {number} timeLeft - Remaining time for the current round.
+ * @property {boolean} gameFinished - Whether the game has finished.
+ * @property {function} setUserInput - Setter for updating player input.
+ * @property {function} checkAnswer - Function to check if current input is correct.
+ * @property {function} restartGame - Function to restart the game from round 1.
+ * @property {number} maxRounds - Maximum number of rounds in the game.
+ */
 export function useGameLogic() {
   const { settings } = useGameSettings();
   const { rounds, difficulty, timer } = settings;
@@ -39,6 +59,7 @@ export function useGameLogic() {
   const [timeLeft, setTimeLeft] = useState(timer);
   const [gameFinished, setGameFinished] = useState(false);
 
+  /** Starts a new round with a random word and resets inputs and timer */
   const startNewRound = useCallback(() => {
     const randomWord = words[Math.floor(Math.random() * words.length)];
     setCurrentWord(randomWord);
@@ -47,6 +68,11 @@ export function useGameLogic() {
     setTimeLeft(timer);
   }, [words, timer]);
 
+  /**
+   * Checks if user's input is correct and updates score.
+   * Ends game if last round is reached.
+   * @returns {Object} Result object indicating if game finished and current score.
+   */
   const checkAnswer = useCallback(() => {
     let newScore = score;
     if (userInput.toUpperCase() === currentWord) {
@@ -54,17 +80,16 @@ export function useGameLogic() {
       setScore(newScore);
     }
 
-    // Перевіряємо чи це останній раунд
     if (round >= rounds) {
       setGameFinished(true);
       return { finished: true, score: newScore, maxRounds: rounds };
     }
 
-    // Якщо не останній раунд - продовжуємо
     setRound(round + 1);
     return { finished: false };
   }, [userInput, currentWord, round, score, rounds]);
 
+  /** Restarts the game from round 1 */
   const restartGame = useCallback(() => {
     setRound(1);
     setScore(0);
@@ -72,14 +97,12 @@ export function useGameLogic() {
     startNewRound();
   }, [startNewRound]);
 
-  // Запуск нового раунду
   useEffect(() => {
     if (!gameFinished) {
       startNewRound();
     }
   }, [round, gameFinished, startNewRound]);
 
-  // Логіка таймера
   useEffect(() => {
     if (timer === 0 || gameFinished) return;
     
