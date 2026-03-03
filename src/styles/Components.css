@@ -1,0 +1,35 @@
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+.anagram-box {
+  margin: 20px 0;
+}
+
+.scrambled-word {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.answer-input {
+  padding: 8px;
+  font-size: 16px;
+  width: 250px;
+}

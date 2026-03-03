@@ -1,0 +1,12 @@
+.page {
+  padding: 20px;
+}
+
+.start-page, .game-page, .result-page {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
